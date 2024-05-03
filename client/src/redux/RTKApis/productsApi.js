@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
-const baseUrl = 'http://localhost:8080'
+const baseUrl = 'https://solhaven-shopping-store-webapp.onrender.com'
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
