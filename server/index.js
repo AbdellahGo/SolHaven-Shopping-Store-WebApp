@@ -34,7 +34,7 @@ const data = {
             image: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fcatagory%2Fcategory-4.jpg&w=96&q=75',
             title: 'Fresh Bakery',
             link: 'search?category=fresh-bakery',
-            numberOfItems: '4'
+            numberOfItems: '2'
         },
         {
             id: 5,
@@ -457,7 +457,7 @@ const data = {
             price: '35.00',
             priceDiscount: '38.00',
             availability: 20,
-            categories: 'Fresh Fruits ',
+            categories: 'Fresh Fruits',
             tags: 'Cranberries',
             paymentImage: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fshape%2Fpayment-2.png&w=384&q=75',
             productDescription: 'Cranberries Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.',
@@ -507,7 +507,7 @@ const data = {
             ],
             price: '42.00',
             availability: 20,
-            categories: 'Fresh Meat ',
+            categories: 'Fresh Meat',
             tags: 'Chicken Tenders',
             paymentImage: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fshape%2Fpayment-2.png&w=384&q=75',
             productDescription: 'Chicken Tenders Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.',
@@ -894,7 +894,7 @@ const data = {
             price: '32.00',
             priceDiscount: '',
             availability: 42,
-            categories: 'Fruit Fruit',
+            categories: 'Fresh Fruits',
             tags: 'Dragon Fruit',
             paymentImage: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fshape%2Fpayment-2.png&w=384&q=75',
             productDescription: 'Dragon Fruit Sparkling Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.',
@@ -955,7 +955,7 @@ const data = {
             price: '31.00',
             priceDiscount: '',
             availability: 42,
-            categories: 'Fruit Fruit',
+            categories: 'Fresh Fruits',
             tags: 'Lime Fruit',
             paymentImage: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fshape%2Fpayment-2.png&w=384&q=75',
             productDescription: 'Lime Fruit Sparkling Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.',
@@ -1015,7 +1015,7 @@ const data = {
             price: '54.00',
             priceDiscount: '',
             availability: 47,
-            categories: 'Fruit Fruit',
+            categories: 'Fresh Fruits',
             tags: 'Apricot Fruit',
             paymentImage: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fshape%2Fpayment-2.png&w=384&q=75',
             productDescription: 'Apricot Fruit Sparkling Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.',
@@ -1378,7 +1378,7 @@ const data = {
             price: '7.49',
             priceDiscount: '',
             availability: 30,
-            categories: 'Fresh fruit',
+            categories: 'Fresh Fruits',
             tags: 'Melons Each',
             paymentImage: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fshape%2Fpayment-2.png&w=384&q=75',
             productDescription: 'Melons Each Sparkling Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.',
@@ -1431,7 +1431,7 @@ const data = {
             price: '5.28',
             priceDiscount: '5.98',
             availability: 30,
-            categories: 'Fresh Drink',
+            categories: 'Fruit Drink',
             tags: 'Maple Syrup',
             paymentImage: 'https://orfarm-next-js.vercel.app/_next/image?url=%2Fassets%2Fimg%2Fshape%2Fpayment-2.png&w=384&q=75',
             productDescription: 'Maple Syrup Sparkling Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.',
@@ -2114,5 +2114,5 @@ app.get('/blogs', (req, res) => {
 
 
 app.listen(8080, () => {
-    console.log('Server is running on https://solhaven-shopping-store-webapp.onrender.com');
+    console.log('Server is running on http://localhost:8080');
 })
