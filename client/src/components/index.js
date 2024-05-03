@@ -56,5 +56,6 @@ export { default as ShopBanner } from './ShopBanner';
 export { default as CategoryFilter } from './CategoryFilter';
 export { default as ColorFilter } from './ColorFilter';
 export { default as RatingFilter } from './RatingFilter';
+export { default as PriceFilter } from './PriceFilter';
 
 

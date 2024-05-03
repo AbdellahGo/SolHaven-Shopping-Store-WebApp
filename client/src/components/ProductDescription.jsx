@@ -88,7 +88,7 @@ const ProductDescription = ({ productData }) => {
                     comment: comment
                 }
             }
-            const response = await axios.post(`https://solhaven-shopping-store-webapp.onrender.com/products/${id}`, data, { headers: { 'Content-Type': 'application/json' } });
+            const response = await axios.post(`http://localhost:8080/products/${id}`, data, { headers: { 'Content-Type': 'application/json' } });
             setProductDetailsState(response.data.product)
         } catch (error) {
             console.log(error);

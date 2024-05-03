@@ -103,7 +103,7 @@ const ProductCard = ({ content, handleClickIcon, handleClickAddToCart, addedWish
                             </div>
                         </div >
                     ) : (
-                        <div key={item.id} className='product flex md:flex-row flex-col md:items-center w-full px-12 bg-white p-20 rounded-[10px] overflow-hidden'>
+                        <div className='product flex md:flex-row flex-col md:items-center w-full px-12 bg-white p-20 rounded-[10px] overflow-hidden'>
                             <div className='relative transition-all overflow-hidden'>
                                 {item.discount && (
                                     <span className='z-10 block discount absolute top-20 left-20 rounded-[2px] font-jost font-medium text-12 py-[3px] px-[9px] text-white bg-theme-3'>
@@ -128,8 +128,8 @@ const ProductCard = ({ content, handleClickIcon, handleClickAddToCart, addedWish
                                         ))}
                                     </div>
                                     <ul>
-                                        {item.specifications.map((item) => (
-                                            <li className='font-jost text-[#79819c] text-14 leading-[22px] relative pl-16'>
+                                        {item.specifications.map((item, i) => (
+                                            <li key={i} className='font-jost text-[#79819c] text-14 leading-[22px] relative pl-16'>
                                                 <span className='absolute left-0 top-[50%] translate-y-[-50%] h-[5px] w-[5px] rounded-full bg-[#79819c]' />
                                                 {item}
                                             </li>

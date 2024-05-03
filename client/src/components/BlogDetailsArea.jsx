@@ -69,7 +69,7 @@ const BlogDetails = ({ blogData, blogId, blogsList }) => {
                 image: 'https://img.freepik.com/vecteurs-libre/homme-mafieux-mysterieux-fumant-cigarette_52683-34828.jpg?w=740&t=st=1714318023~exp=1714318623~hmac=e413134cd30c036a06bfb382d74dbfaaf425c95fe0c8869df163d7bba0f616f2',
                 comment: comment
             }
-            const response = await axios.post(`https://solhaven-shopping-store-webapp.onrender.com/blogs/${blogId}`, data, { headers: { 'Content-Type': 'application/json' } });
+            const response = await axios.post(`http://localhost:8080/blogs/${blogId}`, data, { headers: { 'Content-Type': 'application/json' } });
             setBlogDetails(response.data.blog)
         } catch (error) {
             console.log(error);

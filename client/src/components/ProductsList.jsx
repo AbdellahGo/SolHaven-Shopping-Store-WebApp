@@ -22,7 +22,7 @@ const ProductsList = ({ productList, setProductList, defaultProducts, noContaine
     const { addedProductsId } = useSelector((state) => state.cart);
     const { addedWishlistProductsId } = useSelector((state) => state.wishlist);
     const { addedCompareProductsId } = useSelector((state) => state.compare);
-    const pages = Math.ceil(productList.length / 12)
+    const pages = Math.ceil(productList?.length / 12)
     const numberOfProducts = 12 * currentPage
     const numberStartProducts = currentPage === 1 ? 0 : numberOfProducts - 12
     const finalProductsList = productList.slice(numberStartProducts, numberOfProducts)
@@ -112,7 +112,7 @@ const ProductsList = ({ productList, setProductList, defaultProducts, noContaine
                                 addedCompareProductsId={addedCompareProductsId}
                                 handleClickAddToCart={handleClickAddToCart}
                                 handleClickIcon={handleClickIcon}
-                                content={finalProductsList}
+                                content={finalProductsList || []}
                             />
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoIosCheckmark } from 'react-icons/io'
 
-const ColorFilter = ({ colorFilter, setColorFilter, h4Styles }) => {
+const ColorFilter = ({ colorFilter, handleFilterByColor, h4Styles }) => {
     const colors = ['red', 'green', 'black', 'grey', 'blue']
     return (
         <div className='border-b-1 border-dotted border-black pb-[25px] mb-30'>
@@ -9,9 +9,9 @@ const ColorFilter = ({ colorFilter, setColorFilter, h4Styles }) => {
             <ul>
                 {colors.map((color, i) => (
                     <li key={i} className='flex items-center gap-8 cursor-pointer text-14 leading-[30px] text-link-color font-jost'
-                        onClick={() => setColorFilter((prev) => prev === color ? '' : color)}>
+                        onClick={() => handleFilterByColor(colorFilter === color.trim().toLowerCase() ? '' : color.trim().toLowerCase())}>
                         <span className={`flex items-center justify-between rounded-full h-[15px] w-[15px]`} style={{ backgroundColor: `${color}` }}>
-                            {colorFilter === color && <IoIosCheckmark className='text-16 text-white'/> }
+                            {colorFilter === color.trim().toLowerCase() && <IoIosCheckmark className='text-16 text-white'/> }
                         </span>
                         {color}
                     </li>

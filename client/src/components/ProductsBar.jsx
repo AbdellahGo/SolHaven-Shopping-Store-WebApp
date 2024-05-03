@@ -27,7 +27,7 @@ const ProductsBar = ({ categoriesControl, relatedProducts }) => {
     const [productModal, setProductModal] = useState(false)
     const [activeCategory, setActiveCategory] = useState('All')
     const [filterProducts, setFilterProducts] = useState([])
-
+    
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const { addedProductsId } = useSelector((state) => state.cart);
@@ -41,7 +41,6 @@ const ProductsBar = ({ categoriesControl, relatedProducts }) => {
             navigate('/cart')
         }
     }
-    console.log(productsListApi);
     const handleClickAddToWishlist = (id, productsList) => {
         if (!addedWishlistProductsId.includes(id)) {
             dispatch(addToWishlist({ products: productsList, id: id }));

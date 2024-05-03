@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { IoIosCheckmark, IoIosStar } from 'react-icons/io'
 
-const RatingFilter = ({ ratingFilter, setRatingFilter, h4Styles }) => {
+const RatingFilter = ({ ratingFilter, handleFilterByRating, h4Styles }) => {
     const ratingNumbers = [5, 4, 3, 2, 1]
     const ratingCalc = (n) => {
         const ratingStars = []
@@ -21,7 +21,7 @@ const RatingFilter = ({ ratingFilter, setRatingFilter, h4Styles }) => {
             <ul>
                 {ratingNumbers.map((num) => (
                     <li key={num} className='flex items-center gap-8 cursor-pointer text-14 leading-[30px] text-link-color font-jost'
-                        onClick={() => setRatingFilter((prev) => prev === num ? '' : num)}>
+                        onClick={() => handleFilterByRating(ratingFilter === num ? '' : num)}>
                         <span className={`${ratingFilter !== num ? 'p-[6.5px] bg-white border-1 border-blue-gray-300' : ''} bg-heading-secondary rounded-[2px] text-white`}>
                             {ratingFilter === num ? <IoIosCheckmark /> : ''}
                         </span>
