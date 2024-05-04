@@ -10,14 +10,13 @@ import { IoIosCheckmark } from "react-icons/io";
 import axios from 'axios'
 
 
-const BlogDetails = ({ blogData, blogId, blogsList }) => {
-    const [BlogDetails, setBlogDetails] = useState(blogData.blog)
+const BlogDetails = ({ blogId, blogsList, blogDetailsData, setBlogDetailsData }) => {
     const [alert, setAlert] = useState(false)
     const [formCheck, setFormCheck] = useState(false)
     const navigate = useNavigate()
     const { title, author, catLinks, postDate, paragraph1, paragraph2,
         paragraph3, paragraph4, paragraph5, quation,
-        mainImage, imagesList, tagged, comments } = BlogDetails
+        mainImage, imagesList, tagged, comments } = blogDetailsData
     const spanStyles = 'font-medium font-jost text-12 uppercase mr-8 pr-10 relative inline-block mb-8'
     const spanStyles2 = 'font-jost font-medium text-12 leading-[17px] uppercase text-heading-primary inline-block mr-8'
     const pStyles = 'font-jost md:text-18 text-16 leading-[1.5] text-link-color mb-[25px]'
@@ -70,7 +69,7 @@ const BlogDetails = ({ blogData, blogId, blogsList }) => {
                 comment: comment
             }
             const response = await axios.post(`https://solhaven-shopping-store-webapp.onrender.com//blogs/${blogId}`, data, { headers: { 'Content-Type': 'application/json' } });
-            setBlogDetails(response.data.blog)
+            setBlogDetailsData(response.data.blog)
         } catch (error) {
             console.log(error);
         }
@@ -125,7 +124,7 @@ const BlogDetails = ({ blogData, blogId, blogsList }) => {
                             </p>
                         </div>
                         <div className='blog-details-img flex flex-wrap gap-24'>
-                            {imagesList.map((img, i) => (
+                            {imagesList?.map((img, i) => (
                                 <div key={i} className={`${i === imagesList.length - 1 ? 'w-full' : 'md:flex-1 w-full'}`}>
                                     <img src={img} alt="img" className='w-full rounded-[10px] h-auto' />
                                 </div>
@@ -142,7 +141,7 @@ const BlogDetails = ({ blogData, blogId, blogsList }) => {
                         <div className='pt-[15px] pb-[25px] border-b-1 border-border-1 mb-[45px] flex flex-wrap items-center'>
                             <div className='xl:w-7/12 lg:w-6/12 w-full px-12'>
                                 <span className={`${spanStyles2}`}>Tagged: </span>
-                                {tagged.map((item, i) => (
+                                {tagged?.map((item, i) => (
                                     <Link key={i} to='blog' className='font-jost text-[14px] leading-[20px] text-link-color hover:bg-heading-secondary hover:text-white transition bg-blue-gray-200 py-8 px-20 inline-block rounded-[30px] mb-[5px]'>
                                         {item}
                                     </Link>
@@ -150,7 +149,7 @@ const BlogDetails = ({ blogData, blogId, blogsList }) => {
                             </div>
                             <div className='xl:w-5/12 lg:w-6/12 w-full px-12 Mlg:mt-[15px] lg:text-end text-start'>
                                 <span className={`${spanStyles2}`}>Share:</span>
-                                {iconsList.map((icon, i) => (
+                                {iconsList?.map((icon, i) => (
                                     <a href='#' key={i} className='ml-[5px] cursor-pointer text-[#4d5574] text-16  inline-block'>
                                         {icon}
                                     </a>
@@ -203,7 +202,7 @@ const BlogDetails = ({ blogData, blogId, blogsList }) => {
                                 LEAVE A COMMENTs
                             </h3>
                             <ul>
-                                {comments.map(({ id, author, image, comment }) => (
+                                {comments?.map(({ id, author, image, comment }) => (
                                     <li key={id}>
                                         <div className='border-dashed border-b-1 border-border-1 mb-30 pb-30 flex md:flex-row flex-col'>
                                             <div className='h-[70px] w-[70px] md:mr-[25px] Mmd:mb-20'>

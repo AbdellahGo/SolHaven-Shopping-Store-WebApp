@@ -57,5 +57,9 @@ export { default as CategoryFilter } from './CategoryFilter';
 export { default as ColorFilter } from './ColorFilter';
 export { default as RatingFilter } from './RatingFilter';
 export { default as PriceFilter } from './PriceFilter';
+export { default as CouponAndLoginArea } from './CouponAndLoginArea';
+export { default as CouponAndLoginHeader } from './CouponAndLoginHeader';
+export { default as BillingDetails } from './BillingDetails';
+export { default as YourOrder } from './YourOrder';
 
 

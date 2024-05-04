@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BreadCrumb, Login, SignUp } from '../components'
 import { container } from '../classes'
 import { CiUser } from "react-icons/ci";
@@ -12,6 +12,11 @@ const SignIn = () => {
   const loginIcons = [<CiUser  />, <GoKey  />]
   const signUpIcons = [<CiUser />, <CiMail />, <GoKey/>]
 
+
+
+  useEffect(() => {
+    window.scroll({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
     <div>
       <BreadCrumb small />

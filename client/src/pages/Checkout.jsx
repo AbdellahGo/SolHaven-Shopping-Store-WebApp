@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { BreadCrumb, CouponAndLoginArea } from '../components'
 
 const Checkout = () => {
+  useEffect(() => {
+    window.scroll({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
-    <div>Checkout</div>
+    <div>
+      <BreadCrumb small/>
+      <CouponAndLoginArea/>
+    </div>
   )
 }
 

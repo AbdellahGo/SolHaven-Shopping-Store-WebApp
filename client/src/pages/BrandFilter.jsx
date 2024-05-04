@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoIosCheckmark } from 'react-icons/io'
 const BrandFilter = ({brandFilter, handleFilterByBrand, h4Styles}) => {
     const brands = ['Vons', 'Super Market', 'Aldi', 'Albertsons', 'Ralphs', 'ShopRite']
+
+
+    useEffect(() => {
+        window.scrollTo({ top: 0 })
+      }, [])
     return (
         <div className='border-b-1 border-dotted border-black pb-[25px] mb-30'>
             <h4 className={`${h4Styles}`}>FILTER BY BRAND</h4>

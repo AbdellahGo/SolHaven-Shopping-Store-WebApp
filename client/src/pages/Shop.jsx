@@ -3,93 +3,15 @@ import { BreadCrumb, CategoryFilter, ColorFilter, ProductsList, RatingFilter, Sh
 import { container } from '../classes'
 import { useGetCategoriesListQuery, useGetProductsListQuery } from '../redux/RTKApis/productsApi';
 import BrandFilter from './BrandFilter';
+import { categoriesData } from '../displayedData/data';
 
 const Shop = () => {
+
   const h4Styles = 'mb-8 font-bold text-14 leading-[18px] tracking-[-0.03em] uppercase text-heading-primary font-quicksand'
   const { data: categoriesListApi } = useGetCategoriesListQuery()
   const { data, isLoading } = useGetProductsListQuery();
   const [productList, setProductList] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([])
-
-  // const [categoryFilter, setCategoryFilter] = useState('')
-  // const [priceFilter, setPriceFilter] = useState('')
-  // const [colorFilter, setColorFilter] = useState('')
-  // const [brandFilter, setBrandFilter] = useState('')
-  // const [ratingFilter, setRatingFilter] = useState('')
-
-
-
-  // const handleClickResetFilters = () => {
-  //   setCategoryFilter('')
-  //   setPriceFilter('')
-  //   setColorFilter('')
-  //   setBrandFilter('')
-  //   setRatingFilter('')
-  //   setProductList(data)
-  // }
-  // const handleFilterByCategory = (category) => {
-  //   setCategoryFilter((prev) => prev === category ? '' : category)
-  //   let filteredProducts = []
-  //   if (priceFilter || colorFilter || brandFilter || ratingFilter) {
-  //     filteredProducts = productList?.filter(product => product.categories.trim().toLowerCase() === category)
-  //   } else {
-  //     filteredProducts = data?.filter(product => category ? product.categories.trim().toLowerCase() === category : product )
-  //   }
-  //   setProductList(filteredProducts)
-  //   setDefaultProducts(filteredProducts)
-  // }
-
-  // const handleFilterByPrice = (price) => {
-  //   setPriceFilter((prev) => prev === price ? '' : price)
-  //   const minPrice = parseInt(price.split('-')[0])
-  //   const maxPrice = parseInt(price.split('-')[1])
-  //   let filteredProducts = []
-  //   if (categoryFilter || colorFilter || brandFilter || ratingFilter) {
-  //     filteredProducts = productList?.filter(product => parseInt(product.price) >= minPrice && parseInt(product.price) <= maxPrice)
-  //   } else {
-  //     filteredProducts = data?.filter(product => price ? parseInt(product.price) >= minPrice && parseInt(product.price) <= maxPrice : product)
-  //   }
-  //   setProductList(filteredProducts)
-  //   setDefaultProducts(filteredProducts)
-  // }
-
-  // const handleFilterByColor = (color) => {
-  //   setColorFilter((prev) => prev === color ? '' : color)
-  //   let filteredProducts = []
-  //   if (categoryFilter || priceFilter || brandFilter || ratingFilter) {
-  //     filteredProducts = productList?.filter(product => product.color === color)
-  //   } else {
-  //     filteredProducts = data?.filter(product => color ? product.color === color : product)
-  //   }
-  //   setProductList(filteredProducts)
-  //   setDefaultProducts(filteredProducts)
-  // }
-
-
-  // const handleFilterByBrand = (brand) => {
-  //   setBrandFilter((prev) => prev === brand ? '' : brand)
-  //   let filteredProducts = []
-  //   if (categoryFilter || priceFilter || colorFilter || ratingFilter) {
-  //     filteredProducts = productList?.filter(product => product.brands.trim().toLowerCase() === brand)
-  //   } else {
-  //     filteredProducts = data?.filter(product => brand ? product.brands.trim().toLowerCase() === brand : product)
-  //   }
-  //   setProductList(filteredProducts)
-  //   setDefaultProducts(filteredProducts)
-  // }
-
-
-  // const handleFilterByRating = (rating) => {
-  //   setRatingFilter((prev) => prev === rating ? '' : rating)
-  //   let filteredProducts = []
-  //   if (categoryFilter || priceFilter || colorFilter || brandFilter) {
-  //     filteredProducts = productList?.filter(product => parseInt(product.rating) === rating)
-  //   } else {
-  //     filteredProducts = data?.filter(product => rating ? parseInt(product.rating) === rating : product)
-  //   }
-  //   setProductList(filteredProducts)
-  //   setDefaultProducts(filteredProducts)
-  // }
 
   const [filters, setFilters] = useState({
     category: '',
@@ -167,6 +89,11 @@ const Shop = () => {
   }, [data, isLoading]);
 
 
+
+  useEffect(() => {
+    window.scroll({ top: 0, behavior: 'smooth' })
+  }, [])
+
   if (isLoading) return 'Loading...';
 
 
@@ -179,7 +106,7 @@ const Shop = () => {
           <div className='flex xl:flex-row xl:gap-[12px] gap-[30px] flex-col'>
             <div className='xl:w-3/12 w-full '>
               <div className='bg-white pt-[25px] px-30 mb-35 pb-18 rounded-[10px]'>
-                <CategoryFilter categoryFilter={filters.category} handleFilterByCategory={handleFilterByCategory} categoriesList={categoriesListApi || []} h4Styles={h4Styles} />
+                <CategoryFilter categoryFilter={filters.category} handleFilterByCategory={handleFilterByCategory} categoriesList={categoriesListApi || categoriesData || []} h4Styles={h4Styles} />
                 <PriceFilter priceFilter={filters.price} handleFilterByPrice={handleFilterByPrice} h4Styles={h4Styles} />
                 <ColorFilter colorFilter={filters.color} handleFilterByColor={handleFilterByColor} h4Styles={h4Styles} />
                 <BrandFilter brandFilter={filters.brand} handleFilterByBrand={handleFilterByBrand} h4Styles={h4Styles} />

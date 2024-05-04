@@ -55,7 +55,7 @@ const Login = ({ loginIcons, iconStyles, inputStyles, buttonStyles }) => {
                             <div className='tooltip absolute bottom-[110%] left-[50%] -translate-x-[50%]  p-8 font-jost text-16 rounded-[3px] bg-white text-gray-10 border-1 border-heading-secondary w-max'>
                                 <span className='block'>
                                     {alert && 'You have successfully logged in'}
-                                    {noUser && 'Sorry, there is no account that matches the data you entered'}
+                                    {noUser && 'Sorry, there is no account that matches the data you entered, Please Sign Up first'}
                                 </span>
                             </div>
                             <IoMdArrowDropdown fontSize={45} className='text-heading-secondary absolute bottom-[98.5%] left-[50%] translate-x-[-50%]' />

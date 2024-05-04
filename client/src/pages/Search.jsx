@@ -1,45 +1,3 @@
-// import React, { useEffect, useState } from 'react'
-// import { BreadCrumb, Categories, ProductsList } from '../components'
-// import { useGetProductsListQuery } from '../redux/RTKApis/productsApi'
-// import { useLocation } from 'react-router-dom'
-
-// const Search = () => {
-//     const { search } = useLocation()
-//     const match = search.match(/(?:\?category=([^&]+)|search\?searchText=([^&]+)).*$/);
-//     const { data, isLoading } = useGetProductsListQuery()
-//     const [filteredProducts, setFilteredProducts] = useState([]);
-
-//     const filterProductsByCategoryOrSearchTerm = (data) => {
-//         if (!data) return []; // Return empty array if data is not available yet
-//         const category = match && match[1].split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-//         const searchText = match && match[2];
-//         return data.filter(product => {
-//             if (category) {
-//                 return product.categories === category.split('-').join();
-//             } else if (searchText) {
-//                 return product.title.includes(searchText) || product.categories.includes(searchText);
-//             }
-//             return []; // If no category or searchText is provided, return all products
-//         });
-//     };
-
-//     if (isLoading) return 'Loading...'
-//     useEffect(() => {
-//         setFilteredProducts(filterProductsByCategoryOrSearchTerm(data));
-//     }, [search, data]);
-
-//     return (
-//         <div className='bg-gray-8'>
-//             <BreadCrumb styles='bg-gray-1' small />
-//             <Categories />
-//             <ProductsList content={filterProductsByCategoryOrSearchTerm()} />
-//         </div>
-//     )
-// }
-
-// export default Search
-
-
 import React, { useEffect, useState } from 'react';
 import { BreadCrumb, Categories, ProductsList } from '../components';
 import { useGetProductsListQuery } from '../redux/RTKApis/productsApi';
@@ -72,6 +30,11 @@ const Search = () => {
         setProductList(filterProductsByCategoryOrSearchTerm(data));
         setDefaultProducts(filterProductsByCategoryOrSearchTerm(data))
     }, [search, data]);
+
+
+    useEffect(() => {
+        window.scrollTo({ top: 0 })
+      }, [])
 
     if (isLoading) return 'Loading...';
 

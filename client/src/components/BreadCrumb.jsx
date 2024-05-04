@@ -9,7 +9,7 @@ const BreadCrumb = ({ small, styles, specificLinkName }) => {
 
     return (
         <div className={`${styles} ${!small ? 'bg-gray-1 pb-[55px] pt-[50px]' : ''}`}>
-            <div className={`${container} px-12`}>
+            <div className={`${container}`}>
                 <div className='py-8 px-12'>
                     {!small && <h4 className='text-center capitalize font-quicksand font-bold text-32 leading-[40px] text-heading-primary'>
                         {pathnames[pathnames.length - 1]}</h4>}

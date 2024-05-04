@@ -10,6 +10,7 @@ import { SlLayers } from "react-icons/sl";
 import { GoShareAndroid } from "react-icons/go";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCartWithQuantity } from '../redux/reduxSlice/cartSlice';
+import { productsBar } from '../displayedData/data';
 
 
 
@@ -21,7 +22,7 @@ const productDetailsCard = ({ notModal, productId, productModal, handleClickAddT
     const dispatch = useDispatch()
     const { addedWishlistProductsId } = useSelector((state) => state.wishlist)
     const { addedCompareProductsId } = useSelector((state) => state.compare)
-    const product = data?.product
+    const product = data?.product || productsBar.productsList[productId - 1]
     const listElementStyle = 'relative text-[#455770] font-jost text-13 leading-[19px] pr-20 mr-[15px]'
     const beforeElementStyle = 'sm:before:absolute sm:before:right-0 sm:before:w-[1px] sm:before:h-[12px] sm:before:bg-[#e6ecf0] sm:before:top-[50%] sm:before:translate-y-[-50%]'
     const stars = []

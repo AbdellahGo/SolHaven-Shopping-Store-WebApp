@@ -91,9 +91,10 @@ const ProductsBar = ({ categoriesControl, relatedProducts }) => {
 
 
     const filterProductsByCategory = (category) => {
+        const products = productsListApi || productsList
         setActiveCategory(category);
         // Filter products based on the selected category
-        const filteredProducts = category === 'All' ? productsListApi : productsListApi.filter((product) => product.categories === category);
+        const filteredProducts = category === 'All' ? products : products.filter((product) => product.categories === category);
         setFilterProducts(filteredProducts);
     };
 
