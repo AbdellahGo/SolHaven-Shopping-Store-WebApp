@@ -23,7 +23,7 @@ function App() {
         <Route path='shop-details/:id' element={<ShopDetails />} />
         <Route path='blog-details/:id' element={<BlogDetails />} />
         <Route path='search' element={<Search />} />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path='/*' element={<ErrorPage />} />
       </Route>
     )
   )
