@@ -36,13 +36,12 @@ const Search = () => {
         window.scrollTo({ top: 0 })
       }, [])
 
-    if (isLoading) return 'Loading...';
 
     return (
         <div className='bg-gray-8'>
             <BreadCrumb styles='bg-gray-1' small />
             <Categories />
-            <ProductsList defaultProducts={defaultProducts} productList={productList} setProductList={setProductList} />
+            <ProductsList loader={isLoading} defaultProducts={defaultProducts} productList={productList} setProductList={setProductList} />
         </div>
     );
 };

@@ -6,12 +6,12 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 import { container } from '../classes'
-import { Modal, Pagination, ProductCard, ProductDetails, ProductFilter } from '../components'
+import { Error, Loader, Modal, Pagination, ProductCard, ProductDetails, ProductFilter } from '../components'
 import { addToWishlist, loadWishlistFromLocalStorage, removeFromWishlist } from '../redux/reduxSlice/wishlistSlice';
 import { addToCompare, loadCompareFromLocalStorage, removeFromWCompare } from '../redux/reduxSlice/compareSlice';
 import { emptyCart } from '../assets';
 
-const ProductsList = ({ productList, setProductList, defaultProducts, noContainer }) => {
+const ProductsList = ({ loader, productList, setProductList, defaultProducts, noContainer }) => {
     const [toggleGrid, setToggleGrid] = useState(4)
     const [toggleSortProducts, setToggleSortProducts] = useState(null)
     const [productId, setProductId] = useState(null)
@@ -62,7 +62,7 @@ const ProductsList = ({ productList, setProductList, defaultProducts, noContaine
         } else if (sortType === 'low') {
             sortedContent.sort((a, b) => parseInt(a.price) - parseInt(b.price));
         } else {
-            sortedContent =  [...defaultProducts]; // Reassign sortedContent
+            sortedContent = [...defaultProducts]; // Reassign sortedContent
         }
         setProductList(sortedContent);
     }
@@ -98,40 +98,34 @@ const ProductsList = ({ productList, setProductList, defaultProducts, noContaine
             <div className={`${noContainer ? '' : container} px-12`}>
                 <ProductFilter fromProduct={fromProduct} toProduct={toProduct} ProductLen={productList.length} toggleSortProducts={toggleSortProducts} handleClickSortProducts={handleClickSortProducts} toggleGrid={toggleGrid} setToggleGrid={setToggleGrid} />
             </div>
-            {productList.length > 0 ? (
+            {!loader ? (
                 <>
-                    <Modal handleCancelModal={handleCancelModal} productModal={productModal} >
-                        <ProductDetails productsListApi={productList} productModal={productModal} productId={productId} handleClickAddToWishlist={handleClickAddToWishlist} handleClickAddToCompare={handleClickAddToCompare} />
-                    </Modal>
-                    <div className={`${noContainer ? '' : container} px-12 relative`}>
-                        <div className={`grid gap-20 ${toggleGrid === 4 ? ' xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2' : toggleGrid === 3 ? 'lg:grid-cols-3 sm:grid-cols-2' : 'grid-cols-1'}`}>
-                            <ProductCard
-                                toggleGrid={toggleGrid}
-                                addedProductsId={addedProductsId}
-                                addedWishlistProductsId={addedWishlistProductsId}
-                                addedCompareProductsId={addedCompareProductsId}
-                                handleClickAddToCart={handleClickAddToCart}
-                                handleClickIcon={handleClickIcon}
-                                content={finalProductsList || []}
-                            />
-                        </div>
-                    </div>
-                    <Pagination pages={pages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+                    {productList.length > 0 ? (
+                        <>
+                            <Modal handleCancelModal={handleCancelModal} productModal={productModal} >
+                                <ProductDetails productsListApi={productList} productModal={productModal} productId={productId} handleClickAddToWishlist={handleClickAddToWishlist} handleClickAddToCompare={handleClickAddToCompare} />
+                            </Modal>
+                            <div className={`${noContainer ? '' : container} px-12 relative`}>
+                                <div className={`grid gap-20 ${toggleGrid === 4 ? ' xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2' : toggleGrid === 3 ? 'lg:grid-cols-3 sm:grid-cols-2' : 'grid-cols-1'}`}>
+                                    <ProductCard
+                                        toggleGrid={toggleGrid}
+                                        addedProductsId={addedProductsId}
+                                        addedWishlistProductsId={addedWishlistProductsId}
+                                        addedCompareProductsId={addedCompareProductsId}
+                                        handleClickAddToCart={handleClickAddToCart}
+                                        handleClickIcon={handleClickIcon}
+                                        content={finalProductsList || []}
+                                    />
+                                </div>
+                            </div>
+                            <Pagination pages={pages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+                        </>
+                    ) : (
+                        <Error product/>
+                    )}
                 </>
-            ) : (
-                <div className='mt-80 pb-80 text-center'>
-                    <div className='mb-30'>
-                        <img src={emptyCart} alt="emptyCart image" className='w-[283px] h-[171px] mx-auto' />
-                    </div>
-                    <h4 className='text-[26px] font-quicksand text-heading-primary font-normal leading-[1.2] mb-8'>
-                        Sorry! Could not find the product you were looking For!!!
-                    </h4>
-                    <p className='font-jost text-16 font-normal text-link-color mb-[15px] leading-[23px]'>Please check if you have misspelt something or try searching with other words.</p>
-                    <Link to='/shop' className='bg-heading-secondary text-center text-white font-semibold rounded-[50px] inline-block  text-13 uppercase md:px-[53px] px-[30px] md:py-[13px] py-8 transition-all hover:bg-heading-primary'>
-                        Continue Shopping
-                    </Link>
-                </div>
-            )}
+            ) : <Loader />}
+
         </div>
     )
 }

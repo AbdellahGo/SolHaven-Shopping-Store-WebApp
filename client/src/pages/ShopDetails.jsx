@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import { BreadCrumb, RelatedProducts, ShopDetailsArea } from '../components'
+import { BreadCrumb, Error, Loader, RelatedProducts, ShopDetailsArea } from '../components'
 import { useGetProductDetailsQuery, useGetProductsListQuery } from '../redux/RTKApis/productsApi'
 import { useParams } from 'react-router-dom'
+import { container } from '../classes'
 
 function ShopDetails() {
 
@@ -16,15 +17,25 @@ function ShopDetails() {
     window.scroll({ top: 0, behavior: 'smooth' })
   }, [])
 
-  if (isLoading) return 'loading...'
 
-  if (error) return 'error'
 
   return (
-    <div>
+    <div className='bg-gray-1'>
       <BreadCrumb styles='bg-gray-1' specificLinkName={data?.product?.title} small />
-      <ShopDetailsArea productData={data} productId={parseInt(productId)} productsList={productsList}/>
-      <RelatedProducts/>
+      {!isLoading ? (
+        <>
+          {!error ? (
+            <>
+              <ShopDetailsArea productData={data} productId={parseInt(productId)} productsList={productsList} />
+              <RelatedProducts />
+            </>
+          ) : (
+            <div className={`${container}`}>
+              <Error product />
+            </div>
+          )}
+        </>
+      ) : <Loader />}
     </div>
   )
 }

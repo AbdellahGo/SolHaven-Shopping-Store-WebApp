@@ -2,8 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-products-bar
-:root {
+products-bar :root {
   scroll-behavior: smooth;
 }
 
@@ -14,14 +13,6 @@ products-bar
   -moz-transition: all 0.5s linear 0s;
   -ms-transition: all 0.5s linear 0s;
   -o-transition: all 0.5s linear 0s;
-}
-
-.categories,
-.categories * {
-  /* outline: 1px dotted red; */
-}
-* {
-  /* outline: 1px dotted red; */
 }
 
 button,
@@ -435,7 +426,6 @@ input {
   }
 }
 
-
 /* steps */
 .step-box:hover .move-y-axis-animation {
   animation-name: move-y-axis-animation;
@@ -452,12 +442,12 @@ input {
 }
 
 .leaf-image1 {
-    animation: left-right 2s linear infinite;
-    -webkit-animation: left-right 2s linear infinite;
+  animation: left-right 2s linear infinite;
+  -webkit-animation: left-right 2s linear infinite;
 }
 .leaf-image2 {
-    animation: left-right 4s linear infinite;
-    -webkit-animation: left-right 4s linear infinite;
+  animation: left-right 4s linear infinite;
+  -webkit-animation: left-right 4s linear infinite;
 }
 @keyframes left-right {
   0% {
@@ -494,4 +484,49 @@ input {
 /* Handle */
 .product-description .buttons-container::-webkit-scrollbar-thumb {
   background: #c1c1c1;
+}
+
+/* HTML: loader */
+.loader {
+  --d: 22px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #25b09b;
+  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+    calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
+    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
+    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
+    calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+  animation: l27 1s infinite steps(8);
+}
+@keyframes l27 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/* error page */
+.error-image {
+  animation: left-right 3s linear infinite;
+}
+
+@keyframes identifier {
+  0% {
+    transform: translateX(3px);
+  }
+  25% {
+    transform: translateX(7px);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+  75% {
+    transform: translateX(7px);
+  }
+  100% {
+    transform: translateX(2px);
+  }
 }

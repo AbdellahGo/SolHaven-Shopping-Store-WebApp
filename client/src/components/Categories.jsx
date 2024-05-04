@@ -7,11 +7,10 @@ import { categoriesData } from '../displayedData/data';
 
 
 const Categories = () => {
-    const {data: categoriesDataApi, isLoading} = useGetCategoriesListQuery()
+    const {data: categoriesDataApi} = useGetCategoriesListQuery()
     const [scrollLeft, setScrollLeft] = useState(null)
     const slider = useRef(null)
 
-    if (isLoading) return 'Loading...'
 
     return (
         <div className='categories bg-gray-1 pb-40'>

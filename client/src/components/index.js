@@ -61,5 +61,7 @@ export { default as CouponAndLoginArea } from './CouponAndLoginArea';
 export { default as CouponAndLoginHeader } from './CouponAndLoginHeader';
 export { default as BillingDetails } from './BillingDetails';
 export { default as YourOrder } from './YourOrder';
+export { default as Loader } from './Loader';
+export { default as Error } from './Error';
 
 

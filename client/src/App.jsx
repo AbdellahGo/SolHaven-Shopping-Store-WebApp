@@ -1,6 +1,7 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
 import RootLayout from "./layout/RootLayout"
 import { About, Blog, Cart, Checkout, CompareProducts, Contact, FAQs, Home, ShopLocation, Shop, SignIn, Wishlist, ShopDetails, BlogDetails, Search } from "./pages"
+import ErrorPage from "./pages/ErrorPage"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='shop-details/:id' element={<ShopDetails />} />
         <Route path='blog-details/:id' element={<BlogDetails />} />
         <Route path='search' element={<Search />} />
+        <Route path='*' element={<ErrorPage />} />
       </Route>
     )
   )

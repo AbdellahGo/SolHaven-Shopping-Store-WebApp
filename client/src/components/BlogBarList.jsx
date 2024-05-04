@@ -6,7 +6,6 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 const BlogBarList = ({ content }) => {
   const spanStyles = 'font-medium font-jost text-12 uppercase mr-8 pr-10 relative inline-block mb-8'
 
-
     return (
       <>
         {content.map(({ id, title, catLinks, author, postDate, paragraph1, mainImage }) => (

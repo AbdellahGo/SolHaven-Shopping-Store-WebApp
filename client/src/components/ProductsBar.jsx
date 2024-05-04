@@ -8,7 +8,7 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 import { container } from '../classes'
 import { categoriesControlData, productsBar } from '../displayedData/data'
-import { DragScroll, Modal, ProductsBarList, SectionHeader, ProductDetails } from '../components'
+import { DragScroll, Modal, ProductsBarList, SectionHeader, ProductDetails, Loader, Error } from '../components'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useGetProductsListQuery } from '../redux/RTKApis/productsApi';
@@ -17,7 +17,7 @@ import { addToCompare, loadCompareFromLocalStorage, removeFromWCompare } from '.
 
 const ProductsBar = ({ categoriesControl, relatedProducts }) => {
     const { title, subTitle, desc, productsList } = productsBar
-    const { data: productsListApi, isLoading } = useGetProductsListQuery()
+    const { data: productsListApi, isLoading, error } = useGetProductsListQuery()
     const [scrollLeft, setScrollLeft] = useState(null)
     const [leftOrRight, setLeftOrRight] = useState(null)
     const slider = useRef(null)
@@ -27,7 +27,7 @@ const ProductsBar = ({ categoriesControl, relatedProducts }) => {
     const [productModal, setProductModal] = useState(false)
     const [activeCategory, setActiveCategory] = useState('All')
     const [filterProducts, setFilterProducts] = useState([])
-    
+
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const { addedProductsId } = useSelector((state) => state.cart);
@@ -118,7 +118,6 @@ const ProductsBar = ({ categoriesControl, relatedProducts }) => {
         filterProductsByCategory(activeCategory);
     }, [productsListApi]);
 
-    if (isLoading) return 'loading...'
 
     return (
         <div className={`relative products-bar ${relatedProducts ? 'bg-white' : 'bg-gray-1'} ${categoriesControl ? 'pb-[70px]' : ''}`}>
@@ -143,43 +142,48 @@ const ProductsBar = ({ categoriesControl, relatedProducts }) => {
                         ))}
                     </div>
                 )}
-                <div className='drag-scroll-parent'>
-                    <DragScroll scrollLeft={scrollLeft} setScrollLeft={setScrollLeft} slider={slider} sliderStyle='drag-scroll relative Mxxl:cursor-pointer transition-all flex gap-20 overflow-x-auto'>
-                        <ProductsBarList relatedProductCart={relatedProducts ? true : false} addedProductsId={addedProductsId}
-                            addedWishlistProductsId={addedWishlistProductsId}
-                            addedCompareProductsId={addedCompareProductsId}
-                            handleClickAddToCart={handleClickAddToCart}
-                            handleClickIcon={handleClickIcon}
-                            content={categoriesControl ? filterProducts : (productsListApi ? productsListApi.slice(0, relatedProducts ? 4 : 20) : productsList.slice(0, relatedProducts ? 4 : 20))} />
-                    </DragScroll>
-                    <div className='py-10 rounded-10px flex justify-center gap-20 items-center mt-20'>
-                        <span ref={arrowLeft} className='cursor-pointer rounded-full transition items-center justify-center text-white
-                        bg-[#96ae0080] hover:bg-heading-secondary sm:w-[50px] sm:h-[50px] w-[45px] h-[45px] flex'
-                            onClick={handleLeftArrowClick}>
-                            <IoIosArrowBack />
-                        </span>
-                        <span ref={arrowRight} className='cursor-pointer rounded-full transition items-center justify-center text-white
-                        bg-[#96ae0080] hover:bg-heading-secondary sm:w-[50px] sm:h-[50px] w-[45px] h-[45px] flex'
-                            onClick={handleRightArrowClick}>
-                            <IoIosArrowForward />
-                        </span>
-                    </div>
-                    {
-                        categoriesControl && (
-                            <div className='text-center pb-[15px] mt-[25px] font-jost'>
-                                <span className='text-16 text-link-color '>
-                                    Discover thousands of other quality products.
-                                    <Link to='/shop' className='font-medium text-16 text-heading-secondary inline-flex items-center'>Shop All Products
-                                        <span className='ml-[5px] block'>
-                                            <MdKeyboardDoubleArrowRight fontSize={16} />
-                                        </span>
-                                    </Link>
-                                </span>
+                {!isLoading ? (
+                    <>
+                        {!error ? (
+                            <div className='drag-scroll-parent'>
+                                <DragScroll scrollLeft={scrollLeft} setScrollLeft={setScrollLeft} slider={slider} sliderStyle='drag-scroll relative Mxxl:cursor-pointer transition-all flex gap-20 overflow-x-auto'>
+                                    <ProductsBarList relatedProductCart={relatedProducts ? true : false} addedProductsId={addedProductsId}
+                                        addedWishlistProductsId={addedWishlistProductsId}
+                                        addedCompareProductsId={addedCompareProductsId}
+                                        handleClickAddToCart={handleClickAddToCart}
+                                        handleClickIcon={handleClickIcon}
+                                        content={categoriesControl ? filterProducts : (productsListApi ? productsListApi.slice(0, relatedProducts ? 4 : 20) : productsList.slice(0, relatedProducts ? 4 : 20))} />
+                                </DragScroll>
+                                <div className='py-10 rounded-10px flex justify-center gap-20 items-center mt-20'>
+                                    <span ref={arrowLeft} className='cursor-pointer rounded-full transition items-center justify-center text-white
+                                            bg-[#96ae0080] hover:bg-heading-secondary sm:w-[50px] sm:h-[50px] w-[45px] h-[45px] flex'
+                                        onClick={handleLeftArrowClick}>
+                                        <IoIosArrowBack />
+                                    </span>
+                                    <span ref={arrowRight} className='cursor-pointer rounded-full transition items-center justify-center text-white
+                                            bg-[#96ae0080] hover:bg-heading-secondary sm:w-[50px] sm:h-[50px] w-[45px] h-[45px] flex'
+                                        onClick={handleRightArrowClick}>
+                                        <IoIosArrowForward />
+                                    </span>
+                                </div>
+                                {
+                                    categoriesControl && (
+                                        <div className='text-center pb-[15px] mt-[25px] font-jost'>
+                                            <span className='text-16 text-link-color '>
+                                                Discover thousands of other quality products.
+                                                <Link to='/shop' className='font-medium text-16 text-heading-secondary inline-flex items-center'>Shop All Products
+                                                    <span className='ml-[5px] block'>
+                                                        <MdKeyboardDoubleArrowRight fontSize={16} />
+                                                    </span>
+                                                </Link>
+                                            </span>
+                                        </div>
+                                    )
+                                }
                             </div>
-                        )
-                    }
-                </div>
-
+                        ): <Error product />}
+                    </>
+                ) : <Loader />}
             </div>
 
         </div>

@@ -10,7 +10,7 @@ const Faq = () => {
         <div className='py-80'>
             <div className={`${container} px-12`}>
                 <div className='grid lg:grid-cols-2'>
-                    <div className='px-12 border-b-1 border-border-1 mb-60 pb-35 lg:mr-50'>
+                    <div className='px-12 border-b-1 border-border-1 h-fit mb-60 pb-35 lg:mr-50'>
                         <h4 className='mb-[15px] font-quicksand font-bold text-18 tracking-[-0.03em] text-theme-1'>
                             {howCanWeHelpYou.title}
                         </h4>

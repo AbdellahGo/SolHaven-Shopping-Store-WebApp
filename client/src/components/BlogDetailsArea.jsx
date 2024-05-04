@@ -92,7 +92,7 @@ const BlogDetails = ({ blogId, blogsList, blogDetailsData, setBlogDetailsData })
                     <img src={mainImage} alt="mainImage" className='w-full h-auto' />
                 </div>
                 <div className='relative px-12 xl:w-10/12 w-full'>
-                    <div className='pt-35 xl:pr-[70px] lg:px-[30px] bg-white px-[15px] pb-30 xl:pl-[275px] lg:mt-[-120px]'>
+                    <div className={`lg:mt-[-120px] pt-35 xl:pr-[70px] lg:px-[30px] bg-white px-[15px] pb-30 xl:pl-[275px]`}>
                         <div className='blog-details-content'>
                             <div className='mb-[5px]'>
                                 <span className={`${spanStyles} text-heading-secondary`}>

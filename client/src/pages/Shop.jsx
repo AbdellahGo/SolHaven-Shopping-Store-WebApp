@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BreadCrumb, CategoryFilter, ColorFilter, ProductsList, RatingFilter, ShopBanner, SideBanner, PriceFilter } from '../components'
+import { BreadCrumb, CategoryFilter, ColorFilter, ProductsList, RatingFilter, ShopBanner, SideBanner, PriceFilter, Loader } from '../components'
 import { container } from '../classes'
 import { useGetCategoriesListQuery, useGetProductsListQuery } from '../redux/RTKApis/productsApi';
 import BrandFilter from './BrandFilter';
@@ -94,15 +94,12 @@ const Shop = () => {
     window.scroll({ top: 0, behavior: 'smooth' })
   }, [])
 
-  if (isLoading) return 'Loading...';
-
 
   return (
     <div className='bg-gray-1'>
       <BreadCrumb small />
       <div className='pb-200'>
         <div className={`${container}`}>
-          {console.log(categoriesListApi)}
           <div className='flex xl:flex-row xl:gap-[12px] gap-[30px] flex-col'>
             <div className='xl:w-3/12 w-full '>
               <div className='bg-white pt-[25px] px-30 mb-35 pb-18 rounded-[10px]'>
@@ -123,7 +120,7 @@ const Shop = () => {
             </div>
             <div className='xl:w-10/12 w-full '>
               <ShopBanner />
-              <ProductsList noContainer productList={productList || []} setProductList={setProductList} defaultProducts={defaultProducts || []} />
+              <ProductsList loader={isLoading} noContainer productList={productList || []} setProductList={setProductList} defaultProducts={defaultProducts || []} />
             </div>
           </div>
         </div>

@@ -4,16 +4,17 @@ import SectionHeader from './SectionHeader'
 import { blogData } from '../displayedData/data'
 import DragScroll from './DragScroll'
 import BlogBarList from './BlogBarList'
-import {useGetBlogsListQuery } from '../redux/RTKApis/blogsApi'
+import { useGetBlogsListQuery } from '../redux/RTKApis/blogsApi'
+import Loader from './Loader'
+import Error from './Error'
 
 const BlogBar = () => {
-    const {data: blogsListApi, isLoading} = useGetBlogsListQuery()
+    const { data: blogsListApi, isLoading, error } = useGetBlogsListQuery()
     const [scrollLeft, setScrollLeft] = useState(null)
     const slider = useRef(null)
     const { title, subTitle, desc, blogList } = blogData
 
 
-if (isLoading) return 'loading...'
 
     return (
         <div className='bg-gray-1 py-[100px] '>
@@ -24,9 +25,15 @@ if (isLoading) return 'loading...'
                     descStyles='font-jost text-[15px] text-link-color leading-[22px] mt-8'
                     sectionHeaderStyles='pb-[20px] text-center' />
                 <div>
-                    <DragScroll scrollLeft={scrollLeft} setScrollLeft={setScrollLeft} slider={slider} sliderStyle='drag-scroll relative Mxxl:cursor-pointer transition-all flex gap-20 overflow-x-auto'>
-                        <BlogBarList content={blogsListApi ? blogsListApi : blogList} />
-                    </DragScroll>
+                    {!isLoading ? (
+                        <>
+                            {!error ? (
+                                <DragScroll scrollLeft={scrollLeft} setScrollLeft={setScrollLeft} slider={slider} sliderStyle='drag-scroll relative Mxxl:cursor-pointer transition-all flex gap-20 overflow-x-auto'>
+                                    <BlogBarList content={blogsListApi ? blogsListApi : blogList} />
+                                </DragScroll>
+                            ) : <Error blog/>}
+                        </>
+                    ) : <Loader />}
                 </div>
             </div>
 
